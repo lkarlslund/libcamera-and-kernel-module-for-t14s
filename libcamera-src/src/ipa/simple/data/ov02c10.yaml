@@ -1,0 +1,39 @@
+# SPDX-License-Identifier: CC0-1.0
+%YAML 1.1
+---
+version: 1
+algorithms:
+  - BlackLevel:
+      blackLevel: 4096
+  - Awb:
+      locusBlend: 0.50
+      warmStartBlend: 0.65
+      warmStartFrames: 18
+      warmStartRgRange: [ 0.40, 0.80 ]
+      warmStartBgRange: [ 0.30, 0.80 ]
+      decisionLocus:
+        - [ 0.197664, 1.191835 ]
+        - [ 0.445290, 0.825580 ]
+        - [ 0.477077, 0.767101 ]
+        - [ 0.529090, 0.653860 ]
+        - [ 0.549480, 0.500180 ]
+        - [ 0.582410, 0.518815 ]
+        - [ 0.615340, 0.537450 ]
+        - [ 0.961604, 0.433949 ]
+        - [ 1.230240, 0.361110 ]
+        - [ 1.657736, 0.275445 ]
+  - Ccm:
+      ccms:
+        - ct: 3200
+          ccm: [ 1.84, -0.50, -0.34,
+                 -0.16,  1.32, -0.16,
+                 -0.02, -0.52,  1.54 ]
+        - ct: 6500
+          ccm: [ 1.66, -0.36, -0.30,
+                 -0.12,  1.22, -0.10,
+                 -0.02, -0.40,  1.42 ]
+  - Adjust:
+      gamma: 2.1
+      contrast: 1.12
+      saturation: 1.18
+...
