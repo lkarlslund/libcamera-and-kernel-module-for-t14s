@@ -2,14 +2,14 @@
 
 ## Scope
 
-This directory contains the current serious work for the internal front camera on the Lenovo ThinkPad T14s Gen 6 Snapdragon/X1E.
+This directory contains the current work for the internal front camera on the Lenovo ThinkPad T14s Gen 6 Snapdragon/X1E.
 
 Relevant local copies:
 
 - Kernel sensor driver copy:
-  - [`ov02c10.c`](/home/lak/camera-re-serious/kernel/ov02c10.c)
-- Serious libcamera tree:
-  - [`libcamera-src`](/home/lak/camera-re-serious/libcamera-src)
+  - [`ov02c10.c`](/home/lak/libcamera-and-kernel-module-for-t14s/kernel/ov02c10.c)
+- Local libcamera tree:
+  - [`libcamera-src`](/home/lak/libcamera-and-kernel-module-for-t14s/libcamera-src)
 
 The camera sensor is `ov02c10`. The current Linux path is:
 
@@ -25,6 +25,7 @@ The camera sensor is `ov02c10`. The current Linux path is:
 Patched source is copied here:
 
 - [`ov02c10.c`](/home/lak/camera-re-serious/kernel/ov02c10.c)
+  - [`ov02c10.c`](/home/lak/libcamera-and-kernel-module-for-t14s/kernel/ov02c10.c)
 
 The kernel-side changes we are keeping are:
 
@@ -38,22 +39,22 @@ Reason:
 
 We explicitly reverted the experimental extra `1920x1080` sensor mode. The driver is back to the single native Bayer mode.
 
-## Serious libcamera Changes
+## libcamera Changes
 
 Implemented files:
 
-- [`camera_sensor_properties.cpp`](/home/lak/camera-re-serious/libcamera-src/src/libcamera/sensor/camera_sensor_properties.cpp)
-- [`camera_sensor_helper.cpp`](/home/lak/camera-re-serious/libcamera-src/src/ipa/libipa/camera_sensor_helper.cpp)
-- [`awb.cpp`](/home/lak/camera-re-serious/libcamera-src/src/ipa/simple/algorithms/awb.cpp)
-- [`awb.h`](/home/lak/camera-re-serious/libcamera-src/src/ipa/simple/algorithms/awb.h)
-- [`ov02c10.yaml`](/home/lak/camera-re-serious/libcamera-src/src/ipa/simple/data/ov02c10.yaml)
-- [`meson.build`](/home/lak/camera-re-serious/libcamera-src/src/ipa/simple/data/meson.build)
+- [`camera_sensor_properties.cpp`](/home/lak/libcamera-and-kernel-module-for-t14s/libcamera-src/src/libcamera/sensor/camera_sensor_properties.cpp)
+- [`camera_sensor_helper.cpp`](/home/lak/libcamera-and-kernel-module-for-t14s/libcamera-src/src/ipa/libipa/camera_sensor_helper.cpp)
+- [`awb.cpp`](/home/lak/libcamera-and-kernel-module-for-t14s/libcamera-src/src/ipa/simple/algorithms/awb.cpp)
+- [`awb.h`](/home/lak/libcamera-and-kernel-module-for-t14s/libcamera-src/src/ipa/simple/algorithms/awb.h)
+- [`ov02c10.yaml`](/home/lak/libcamera-and-kernel-module-for-t14s/libcamera-src/src/ipa/simple/data/ov02c10.yaml)
+- [`meson.build`](/home/lak/libcamera-and-kernel-module-for-t14s/libcamera-src/src/ipa/simple/data/meson.build)
 
 ### 1. Sensor properties
 
 Added an `ov02c10` entry in:
 
-- [`camera_sensor_properties.cpp`](/home/lak/camera-re-serious/libcamera-src/src/libcamera/sensor/camera_sensor_properties.cpp)
+- [`camera_sensor_properties.cpp`](/home/lak/libcamera-and-kernel-module-for-t14s/libcamera-src/src/libcamera/sensor/camera_sensor_properties.cpp)
 
 What it provides:
 
@@ -70,7 +71,7 @@ Reason:
 
 Added an `ov02c10` helper in:
 
-- [`camera_sensor_helper.cpp`](/home/lak/camera-re-serious/libcamera-src/src/ipa/libipa/camera_sensor_helper.cpp)
+- [`camera_sensor_helper.cpp`](/home/lak/libcamera-and-kernel-module-for-t14s/libcamera-src/src/ipa/libipa/camera_sensor_helper.cpp)
 
 What it provides:
 
@@ -86,11 +87,11 @@ Reason:
 
 Added:
 
-- [`ov02c10.yaml`](/home/lak/camera-re-serious/libcamera-src/src/ipa/simple/data/ov02c10.yaml)
+- [`ov02c10.yaml`](/home/lak/libcamera-and-kernel-module-for-t14s/libcamera-src/src/ipa/simple/data/ov02c10.yaml)
 
 And installed it via:
 
-- [`meson.build`](/home/lak/camera-re-serious/libcamera-src/src/ipa/simple/data/meson.build)
+- [`meson.build`](/home/lak/libcamera-and-kernel-module-for-t14s/libcamera-src/src/ipa/simple/data/meson.build)
 
 What it currently defines:
 
@@ -107,8 +108,8 @@ Reason:
 
 Added sensor-scoped AWB logic in:
 
-- [`awb.cpp`](/home/lak/camera-re-serious/libcamera-src/src/ipa/simple/algorithms/awb.cpp)
-- [`awb.h`](/home/lak/camera-re-serious/libcamera-src/src/ipa/simple/algorithms/awb.h)
+- [`awb.cpp`](/home/lak/libcamera-and-kernel-module-for-t14s/libcamera-src/src/ipa/simple/algorithms/awb.cpp)
+- [`awb.h`](/home/lak/libcamera-and-kernel-module-for-t14s/libcamera-src/src/ipa/simple/algorithms/awb.h)
 
 What it does:
 
@@ -127,7 +128,7 @@ Reason:
 
 ## What We Explicitly Did Not Keep
 
-These were tried in the experimental tree and are not part of the serious tree:
+These were tried in the experimental tree and are not part of this tree:
 
 - no routing patch in `simple.cpp`
 - no startup exposure/gain hardcoding in AGC or `soft_simple`
@@ -160,7 +161,7 @@ Relevant Windows-side findings:
 
 What we used from that:
 
-- the shared 10-point AWB decision locus in [`ov02c10.yaml`](/home/lak/camera-re-serious/libcamera-src/src/ipa/simple/data/ov02c10.yaml)
+- the shared 10-point AWB decision locus in [`ov02c10.yaml`](/home/lak/libcamera-and-kernel-module-for-t14s/libcamera-src/src/ipa/simple/data/ov02c10.yaml)
 - the idea of bounded warm-start for AWB startup behavior
 
 What we did not use:
@@ -171,7 +172,7 @@ What we did not use:
 
 ## Current Status
 
-This serious tree now contains the minimum set of changes that are currently defensible and useful:
+This tree now contains the minimum set of changes that are currently defensible and useful:
 
 - sensor geometry and delay knowledge
 - sensor helper
@@ -180,7 +181,7 @@ This serious tree now contains the minimum set of changes that are currently def
 - finite warm-start
 - sensor-specific CCM and image adjustment defaults
 
-The serious tree was rebuilt with:
+This tree was rebuilt with:
 
 - `simple` pipeline enabled
 - `simple` IPA enabled
