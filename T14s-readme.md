@@ -7,9 +7,9 @@ This directory contains the current work for the internal front camera on the Le
 Relevant local copies:
 
 - Kernel sensor driver copy:
-  - [`ov02c10.c`](/home/lak/libcamera-and-kernel-module-for-t14s/kernel/ov02c10.c)
+  - [`ov02c10.c`](kernel/ov02c10.c)
 - Local libcamera tree:
-  - [`libcamera-src`](/home/lak/libcamera-and-kernel-module-for-t14s/libcamera-src)
+  - [`libcamera-src`](libcamera-src)
 
 The camera sensor is `ov02c10`. The current Linux path is:
 
@@ -24,8 +24,8 @@ The camera sensor is `ov02c10`. The current Linux path is:
 
 Patched source is copied here:
 
-- [`ov02c10.c`](/home/lak/camera-re-serious/kernel/ov02c10.c)
-  - [`ov02c10.c`](/home/lak/libcamera-and-kernel-module-for-t14s/kernel/ov02c10.c)
+- [`ov02c10.c`](kernel/ov02c10.c)
+  - [`ov02c10.c`](kernel/ov02c10.c)
 
 The kernel-side changes we are keeping are:
 
@@ -43,18 +43,18 @@ We explicitly reverted the experimental extra `1920x1080` sensor mode. The drive
 
 Implemented files:
 
-- [`camera_sensor_properties.cpp`](/home/lak/libcamera-and-kernel-module-for-t14s/libcamera-src/src/libcamera/sensor/camera_sensor_properties.cpp)
-- [`camera_sensor_helper.cpp`](/home/lak/libcamera-and-kernel-module-for-t14s/libcamera-src/src/ipa/libipa/camera_sensor_helper.cpp)
-- [`awb.cpp`](/home/lak/libcamera-and-kernel-module-for-t14s/libcamera-src/src/ipa/simple/algorithms/awb.cpp)
-- [`awb.h`](/home/lak/libcamera-and-kernel-module-for-t14s/libcamera-src/src/ipa/simple/algorithms/awb.h)
-- [`ov02c10.yaml`](/home/lak/libcamera-and-kernel-module-for-t14s/libcamera-src/src/ipa/simple/data/ov02c10.yaml)
-- [`meson.build`](/home/lak/libcamera-and-kernel-module-for-t14s/libcamera-src/src/ipa/simple/data/meson.build)
+- [`camera_sensor_properties.cpp`](libcamera-src/src/libcamera/sensor/camera_sensor_properties.cpp)
+- [`camera_sensor_helper.cpp`](libcamera-src/src/ipa/libipa/camera_sensor_helper.cpp)
+- [`awb.cpp`](libcamera-src/src/ipa/simple/algorithms/awb.cpp)
+- [`awb.h`](libcamera-src/src/ipa/simple/algorithms/awb.h)
+- [`ov02c10.yaml`](libcamera-src/src/ipa/simple/data/ov02c10.yaml)
+- [`meson.build`](libcamera-src/src/ipa/simple/data/meson.build)
 
 ### 1. Sensor properties
 
 Added an `ov02c10` entry in:
 
-- [`camera_sensor_properties.cpp`](/home/lak/libcamera-and-kernel-module-for-t14s/libcamera-src/src/libcamera/sensor/camera_sensor_properties.cpp)
+- [`camera_sensor_properties.cpp`](libcamera-src/src/libcamera/sensor/camera_sensor_properties.cpp)
 
 What it provides:
 
@@ -71,7 +71,7 @@ Reason:
 
 Added an `ov02c10` helper in:
 
-- [`camera_sensor_helper.cpp`](/home/lak/libcamera-and-kernel-module-for-t14s/libcamera-src/src/ipa/libipa/camera_sensor_helper.cpp)
+- [`camera_sensor_helper.cpp`](libcamera-src/src/ipa/libipa/camera_sensor_helper.cpp)
 
 What it provides:
 
@@ -87,11 +87,11 @@ Reason:
 
 Added:
 
-- [`ov02c10.yaml`](/home/lak/libcamera-and-kernel-module-for-t14s/libcamera-src/src/ipa/simple/data/ov02c10.yaml)
+- [`ov02c10.yaml`](libcamera-src/src/ipa/simple/data/ov02c10.yaml)
 
 And installed it via:
 
-- [`meson.build`](/home/lak/libcamera-and-kernel-module-for-t14s/libcamera-src/src/ipa/simple/data/meson.build)
+- [`meson.build`](libcamera-src/src/ipa/simple/data/meson.build)
 
 What it currently defines:
 
@@ -108,8 +108,8 @@ Reason:
 
 Added sensor-scoped AWB logic in:
 
-- [`awb.cpp`](/home/lak/libcamera-and-kernel-module-for-t14s/libcamera-src/src/ipa/simple/algorithms/awb.cpp)
-- [`awb.h`](/home/lak/libcamera-and-kernel-module-for-t14s/libcamera-src/src/ipa/simple/algorithms/awb.h)
+- [`awb.cpp`](libcamera-src/src/ipa/simple/algorithms/awb.cpp)
+- [`awb.h`](libcamera-src/src/ipa/simple/algorithms/awb.h)
 
 What it does:
 
@@ -161,7 +161,7 @@ Relevant Windows-side findings:
 
 What we used from that:
 
-- the shared 10-point AWB decision locus in [`ov02c10.yaml`](/home/lak/libcamera-and-kernel-module-for-t14s/libcamera-src/src/ipa/simple/data/ov02c10.yaml)
+- the shared 10-point AWB decision locus in [`ov02c10.yaml`](libcamera-src/src/ipa/simple/data/ov02c10.yaml)
 - the idea of bounded warm-start for AWB startup behavior
 
 What we did not use:
